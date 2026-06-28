@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0f766e">
+    <meta name="description" content="Calculadora simples de separação de custos mensais.">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Calcular Custos</title>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Orçamento mensal</p>
+          <h1>Calcular Custos</h1>
+        </div>
+        <button class="ghost-button" id="installButton" hidden>Instalar</button>
+      </header>
+
+      <section class="salary-panel" aria-labelledby="salaryTitle">
+        <label id="salaryTitle" for="salaryInput">Salário recebido</label>
+        <div class="salary-input">
+          <span>R$</span>
+          <input id="salaryInput" inputmode="decimal" autocomplete="off" aria-describedby="budgetStatus">
+        </div>
+      </section>
+
+      <section class="summary-band" aria-label="Resumo">
+        <div>
+          <span>Separar</span>
+          <strong id="totalAllocated">R$ 0,00</strong>
+        </div>
+        <div>
+          <span>Restante</span>
+          <strong id="remainingMoney">R$ 0,00</strong>
+        </div>
+        <div>
+          <span>Comprometido</span>
+          <strong id="committedPercent">0%</strong>
+        </div>
+      </section>
+
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="budget-status" id="budgetStatus"></p>
+
+      <section class="items-panel" aria-labelledby="itemsTitle">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Contas e metas</p>
+            <h2 id="itemsTitle">Separações do mês</h2>
+          </div>
+          <button class="primary-button" id="addItemButton" type="button">
+            <span aria-hidden="true">+</span>
+            Adicionar
+          </button>
+        </div>
+
+        <ul class="item-list" id="itemList"></ul>
+      </section>
+    </main>
+
+    <template id="itemTemplate">
+      <li class="cost-item">
+        <label class="switch">
+          <input class="item-active" type="checkbox">
+          <span aria-hidden="true"></span>
+        </label>
+        <input class="item-name" type="text" autocomplete="off" aria-label="Nome">
+        <label class="item-money">
+          <span>R$</span>
+          <input class="item-amount" inputmode="decimal" autocomplete="off" aria-label="Valor">
+        </label>
+        <button class="remove-button" type="button" aria-label="Remover">Remover</button>
+      </li>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
